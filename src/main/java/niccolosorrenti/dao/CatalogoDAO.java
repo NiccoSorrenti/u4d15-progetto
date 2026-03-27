@@ -5,6 +5,12 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import niccolosorrenti.entities.Catalogo;
+import niccolosorrenti.entities.Libro;
+import niccolosorrenti.exceptions.NotFoundAuthorExceptions;
+import niccolosorrenti.exceptions.NotFoundTitleException;
+import niccolosorrenti.exceptions.NotFoundYearException;
+
+import java.util.List;
 
 public class CatalogoDAO {
     private final EntityManager em;
@@ -54,5 +60,48 @@ public class CatalogoDAO {
             System.out.println(exception.getMessage());
         }
 
+    }
+
+    public List<Catalogo> ricercaPerAnno(int anno) throws NotFoundYearException {
+
+        TypedQuery<Catalogo> query = em.createQuery("SELECT c FROM Catalogo c WHERE c.annoPubblicazione = :anno", Catalogo.class);
+        query.setParameter("anno", anno);
+        List<Catalogo> risultato = query.getResultList();
+
+        if (risultato.isEmpty()) {
+            throw new NotFoundYearException(anno);
+        }
+
+        System.out.println("Elementi trovati per anno: " + anno);
+
+        return risultato;
+    }
+
+    public List<Libro> ricercaPerAutore(String autore) throws NotFoundAuthorExceptions {
+        TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.autore = :autore", Libro.class);
+        query.setParameter("autore", autore);
+        List<Libro> risultato = query.getResultList();
+
+        if (risultato.isEmpty()) {
+            throw new NotFoundAuthorExceptions(autore);
+        }
+
+        System.out.println("L'elemento con autore " + autore + " è stato trovato");
+
+        return risultato;
+    }
+
+    public List<Catalogo> ricercaPerTitolo(String titolo) throws NotFoundTitleException {
+        TypedQuery<Catalogo> query = em.createQuery("SELECT c FROM Catalogo c WHERE c.titolo ILIKE :titolo", Catalogo.class);
+        query.setParameter("titolo", "%" + titolo + "%");
+        List<Catalogo> risultato = query.getResultList();
+
+        if (risultato.isEmpty()) {
+            throw new NotFoundTitleException(titolo);
+        }
+
+        System.out.println("L'elemento con titolo " + titolo + " è stato trovato");
+
+        return risultato;
     }
 }
