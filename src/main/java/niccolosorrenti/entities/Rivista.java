@@ -2,12 +2,15 @@ package niccolosorrenti.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 import java.time.LocalDate;
 
 @Entity
 public class Rivista extends Catalogo {
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "periodicità")
     private TipoRivista periodicità;
 
