@@ -31,8 +31,7 @@ public abstract class Catalogo {
 
     }
 
-    public Catalogo(UUID id, int codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine) {
-        this.id = id;
+    public Catalogo(int codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine) {
         this.codiceISBN = codiceISBN;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
