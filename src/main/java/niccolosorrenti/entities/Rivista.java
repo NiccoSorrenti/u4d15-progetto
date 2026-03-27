@@ -2,8 +2,6 @@ package niccolosorrenti.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "rivista")
 public class Rivista extends Catalogo {
@@ -16,7 +14,7 @@ public class Rivista extends Catalogo {
 
     }
 
-    public Rivista(int codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine, TipoRivista periodicità) {
+    public Rivista(int codiceISBN, String titolo, int annoPubblicazione, int numeroPagine, TipoRivista periodicità) {
         super(codiceISBN, titolo, annoPubblicazione, numeroPagine);
         this.periodicità = periodicità;
     }

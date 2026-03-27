@@ -2,7 +2,6 @@ package niccolosorrenti.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +13,7 @@ import java.util.UUID;
 public abstract class Catalogo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "codice_isbn", nullable = false, unique = true)
@@ -24,7 +23,7 @@ public abstract class Catalogo {
     private String titolo;
 
     @Column(name = "anno_pubblicazione")
-    private LocalDate annoPubblicazione;
+    private int annoPubblicazione;
 
     @Column(name = "numero_pagine")
     private int numeroPagine;
@@ -36,7 +35,7 @@ public abstract class Catalogo {
 
     }
 
-    public Catalogo(int codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine) {
+    public Catalogo(int codiceISBN, String titolo, int annoPubblicazione, int numeroPagine) {
         this.codiceISBN = codiceISBN;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
@@ -55,7 +54,7 @@ public abstract class Catalogo {
         return titolo;
     }
 
-    public LocalDate getAnnoPubblicazione() {
+    public int getAnnoPubblicazione() {
         return annoPubblicazione;
     }
 

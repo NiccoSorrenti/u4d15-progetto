@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Prestito {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "prestito_id")
     private UUID prestitoId;
 
