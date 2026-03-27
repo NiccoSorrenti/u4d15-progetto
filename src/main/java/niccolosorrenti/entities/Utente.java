@@ -3,9 +3,12 @@ package niccolosorrenti.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name = "utente")
 public class Utente {
 
     @Id
@@ -24,6 +27,9 @@ public class Utente {
 
     @Column(name = "numero_di_tessera", unique = true, nullable = false)
     private int numeroDiTessera;
+
+    @OneToMany(mappedBy = "utente")
+    private List<Prestito> listaPrestiti = new ArrayList<>();
 
 
     protected Utente() {

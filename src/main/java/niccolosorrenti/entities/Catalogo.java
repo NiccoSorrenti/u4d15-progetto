@@ -3,6 +3,8 @@ package niccolosorrenti.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +28,9 @@ public abstract class Catalogo {
 
     @Column(name = "numero_pagine")
     private int numeroPagine;
+
+    @OneToMany(mappedBy = "elementoCatalogo")
+    private List<Prestito> listaPrestiti = new ArrayList<>();
 
     protected Catalogo() {
 

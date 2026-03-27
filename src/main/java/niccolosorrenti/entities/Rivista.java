@@ -1,13 +1,11 @@
 package niccolosorrenti.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "rivista")
 public class Rivista extends Catalogo {
 
     @Enumerated(EnumType.STRING)
