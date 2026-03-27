@@ -2,15 +2,11 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-    <persistence-unit name="u4d14-esercizio-pu">
-        <class>niccolosorrenti.entities.Evento</class>
-        <class>niccolosorrenti.entities.PartitaDiCalcio</class>
-        <class>niccolosorrenti.entities.Concerto</class>
-        <class>niccolosorrenti.entities.GaraDiAtletica</class>
-        <class>niccolosorrenti.entities.Persona</class>
+    <persistence-unit name="catalogobibliograficopu">
 
         <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/u4d14-esercizio"/>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost:5432/catalogobibliografico"/>
             <!-- Nel mio caso la porta è 5433 nel vostro 5432 (se non l'avete cambiata) -->
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="1234"/>
